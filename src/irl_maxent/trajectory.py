@@ -115,17 +115,17 @@ def generate_trajectories(n, world, policy, start, final):
         A generator expression generating `n` `Trajectory` instances
         adhering to the given arguments.
     """
-    start_states = np.atleast_1d(start)
+    # start_states = np.atleast_1d(start)
 
-    def _generate_one():
-        if len(start_states) == world.n_states:
-            s = np.random.choice(range(world.n_states), p=start_states)
+    def _generate_one(index):
+        if len(start[index]) == world.n_states:
+            s = np.random.choice(range(world.n_states), p=start[index])
         else:
-            s = np.random.choice(start_states)
+            s = np.random.choice(start[index])
 
         return generate_trajectory(world, policy, s, final)
 
-    return (_generate_one() for _ in range(n))
+    return (_generate_one(i) for i in range(n))
 
 
 def policy_adapter(policy):

@@ -19,6 +19,19 @@ Some general remarks:
 import numpy as np
 from itertools import product
 
+# class TimeInconsistentMDP:
+#     def __init__(self, length):
+#         self.size = length
+
+#         self.actions = [1, -1] #+1 => work; -1 => wait
+
+#         self.n_states = length
+#         self.n_actions = len(self.actions)
+
+#         self.p_transition = self._transition_prob_table()
+
+#     def state_index_to_point(self, state):
+#         return state
 
 class GridWorld:
     """

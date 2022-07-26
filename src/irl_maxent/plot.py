@@ -87,7 +87,7 @@ def plot_state_values(ax, world, values, border, **kwargs):
         All further key-value arguments will be forwarded to
         `pyplot.imshow`.
     """
-    p = ax.imshow(np.reshape(values, (world.size, world.size)), origin='lower', **kwargs)
+    p = ax.imshow(np.reshape(values, (world.size,1)), origin='lower', **kwargs)
 
     if border is not None:
         for i in range(0, world.size + 1):
@@ -110,12 +110,12 @@ def plot_deterministic_policy(ax, world, policy, **kwargs):
         All further key-value arguments will be forwarded to
         `pyplot.arrow`.
     """
-    arrow_direction = [(0.33, 0), (-0.33, 0), (0, 0.33), (0, -0.33)]
+    arrow_direction = [(0, -0.33), (0, +0.33)]
 
     for state in range(world.n_states):
-        cx, cy = world.state_index_to_point(state)
+        cy = world.state_index_to_point(state)
         dx, dy = arrow_direction[policy[state]]
-        ax.arrow(cx - 0.5 * dx, cy - 0.5 * dy, dx, dy, head_width=0.1, **kwargs)
+        ax.arrow(1 - 0.5 * dx, cy - 0.5 * dy, dx, dy, head_width=0.1)
 
 
 def plot_stochastic_policy(ax, world, policy, border=None, **kwargs):
@@ -191,7 +191,7 @@ def plot_trajectory(ax, world, trajectory, **kwargs):
         `pyplot.tripcolor`.
 
     """
-    xy = [world.state_index_to_point(s) for s in trajectory.states()]
-    x, y = zip(*xy)
+    y = [world.state_index_to_point(s) for s in trajectory.states()]
+    # x, y = zip(*xy)
 
-    return ax.plot(x, y, **kwargs)
+    return ax.plot([1,1,1,1], y, **kwargs)

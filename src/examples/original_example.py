@@ -93,7 +93,7 @@ def maxent_causal(world, terminal, trajectories, discount=0.7):
     return reward
 
 
-def main():
+def run():
     # common style arguments for plotting
     style = {
         'border': {'color': 'red', 'linewidth': 0.5},
@@ -136,7 +136,3 @@ def main():
     plt.draw()
 
     plt.show()
-
-
-if __name__ == '__main__':
-    main()

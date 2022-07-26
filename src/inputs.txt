@@ -1,0 +1,10 @@
+These numbers can be given as inputs
+ - 0/nothing: just normal rational agent MDP
+ - 1: wrong belief about states
+ - 2: agent has wrong belief about rewards
+ - 3: agent has wrong belief about available actions
+ - 4: agent has wrong belief about transition probabilities
+ - 5. agent does hyperbolic discounting 
+ - 6: agent is risk-averse
+ - 7: trajectories are too short to understand longer plans
+ - 8: states are not expressive enough
